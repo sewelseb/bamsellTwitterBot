@@ -6,4 +6,17 @@ require_once ('codebird-php-develop/src/codebird.php');
 $cb = \Codebird\Codebird::getInstance();
 $cb->setToken('732606536518934528-NcL3QkB2oPaRo11ECnDfRPHwGn2Dtiq', 'ct5wL3VWDNnYiwjX91rDJEa3TetGCSxxVCAJJQfR7X0xZ');
 
-$reply = (array) $cb->
+$q = $_POST['q'];
+$count = $_POST['count'];
+$api = $_POST['api'];
+
+$params = array(
+    'screen_name' => $q,
+    'q' => $q,
+    'count' => $count
+);
+
+$data = (array) $cb->$api($params);
+
+//Output result in JSON, getting it ready for jQuery to process
+var_dump($data);
